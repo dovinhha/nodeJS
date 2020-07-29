@@ -1,0 +1,14 @@
+extends ../layout/common
+block content
+  h1 Login
+  if(errors)
+    each err in errors
+      .alert.alert-danger=err
+  form(action='/authLogin/login', method='POST')
+    .form-group
+      label(for='exampleInputEmail1') Email address
+      input#exampleInputEmail1.form-control(type='email', aria-describedby='emailHelp', name = 'gmail', value = values ? values.gmail : '')
+    .form-group
+      label(for='exampleInputPassword1') Password
+      input#exampleInputPassword1.form-control(type='password', name = 'password', value = values ? values.password : '')
+    button.btn.btn-primary.mb-2(type='submit') Login

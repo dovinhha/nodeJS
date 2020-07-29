@@ -1,0 +1,25 @@
+extends ../layout/common
+block content
+  h1 Users
+  h3
+    a(href="/users/create").btn.btn-primary.mb-2(type='submit') New User
+  form.d-flex(action='/users/search', method='GET')
+    input.form-control.mr-sm-2(type='search', placeholder='Search', aria-label='Search', name='q', id='search')
+    button.btn.btn-outline-success.my-2.my-sm-0(type='submit') Search
+  table.table
+    th Name 
+    th Age
+    th Actions
+    each user in users
+      tr
+        td=user.name
+        td=user.age
+        td 
+          a(href="/users/"+user.id) View
+  script(type='text/javascript').
+    const input=document.getElementById('search');
+    input.value=sessionStorage.getItem('draft');
+    input.addEventListener('change',nameSearch);
+    function nameSearch(){
+    sessionStorage.setItem('draft',input.value);
+    }

@@ -1,0 +1,24 @@
+extends ../layout/common
+block content
+  .row
+    each product in products
+      .col-sm-6.col-md-4.col-lg-3
+        .card.mb-3
+          img.card-img-top(src=product.image)
+          .card-body
+            h5.card-title= product.name
+            p.card-text= product.desciption
+            a.btn.btn-primary(href='/cart/add/' + product.id) Add to cart
+
+  nav(aria-label='Page navigation example')
+    ul.pagination.justify-content-end
+      li.page-item.disabled
+        a.page-link(href='#', tabindex='-1', aria-disabled='true') Previous
+      li.page-item
+        a.page-link(href='#') 1
+      li.page-item
+        a.page-link(href='#') 2
+      li.page-item
+        a.page-link(href='#') 3
+      li.page-item
+        a.page-link(href='#') Next

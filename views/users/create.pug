@@ -1,0 +1,17 @@
+extends ../layout/common
+block content
+  h1 Creat User
+  if(errors)
+    each err in errors
+      .alert.alert-danger=err
+  form(action='/users/create', method='POST', enctype='multipart/form-data')
+    .form-group.col-md-4
+      label(for='inputName') Name
+      input#inputName.form-control(type='text', name='name', value = values ? values.name : '')
+    .form-group.col-md-4
+      label(for='inputAge') Age
+      input#inputAge.form-control(type='text', name='age', value = values ? values.age : '')
+    .form-group.col-md-4
+      label(for='avatar') Avatar
+      input#avatar.form-control-file(type='file', name='avatar')
+    button.btn.btn-primary.mb-2(type='submit') Create
